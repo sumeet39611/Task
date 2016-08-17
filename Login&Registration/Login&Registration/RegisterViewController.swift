@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
     //on click of submit button
     @IBAction func SubmitPressed(sender: UIButton)
     {
-        //getting all fields
+        //getting all fields data
         let userName = textUsername.text
         let userPassword = textPassword.text
         let userConfirmPassword = textConfirmPassword.text
@@ -32,27 +32,73 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
         {
             
             displayMyAlertMessage("All fields are required")
-            
-            return
+
         }
         
-        //checking for passwords match
-        if (userPassword != userConfirmPassword)
-        {
-            displayMyAlertMessage("Passwords do not match")
-            return
-        }
-        
+        //checking username length has to be minimum 8
         if (userName?.characters.count < 8)
         {
             displayMyAlertMessage("Username has to be minimum length 8")
             
         }
         
+        //checking for password match
+        if (userPassword != userConfirmPassword)
+        {
+            displayMyAlertMessage("Passwords do not match")
+            
+        }
         
-        
-        
-        
+        //checking password validation using regex
+        if((userPassword) != nil)
+        {
+            let regex = try! NSRegularExpression(pattern:"^(?=.*[A-Z])(?=.*?[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$" , options:[ ])
+            
+            let str1 = regex.stringByReplacingMatchesInString(userPassword!, options:[ ], range: NSMakeRange(0, userPassword!.characters.count), withTemplate: "matched")
+            
+            if str1 == "matched"
+            {
+                /*FIXME: save data in plist
+                var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+                var path = paths.stringByAppendingString("data.plist")
+                var fileManager = NSFileManager.defaultManager()
+                if (!(fileManager.fileExistsAtPath(path)))
+                {
+                    var bundle : NSString = NSBundle.mainBundle().pathForResource("data", ofType: "plist")!
+                    try! fileManager.copyItemAtPath(bundle as String, toPath: path)
+                }
+                data.setObject(object, forKey: "object")
+                data.writeToFile(path, atomically: true)
+                */
+                return
+            }
+            else
+            {
+                displayMyAlertMessage("Password is not in expected format")
+               
+                /*print("ssssss")
+                NSNotificationCenter.defaultCenter().addObserver(self,
+                    selector: "didChangePreferredContentSize:",
+                    name: UIContentSizeCategoryDidChangeNotification,
+                    object :nil)
+
+                let nc = NSNotificationCenter.defaultCenter()
+                nc.postNotificationName("MyNotification",
+                    object: nil,
+                    userInfo: ["message":"Hello there!", "date":NSDate()])
+
+                print("hhhhhh")
+                */
+            }
+
+        }
+    }
+    
+    
+    
+    func didChangePreferredContentSize(notification: NSNotification) {
+        print("hi, wrong format")
+        return
     }
     
     //hiding keypad on return
@@ -77,6 +123,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
         //adding alert to register view
         self.presentViewController(myAlert, animated: true, completion: nil)
         
+        return
         
     }
     
