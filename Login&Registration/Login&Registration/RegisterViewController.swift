@@ -8,7 +8,13 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController,UITextFieldDelegate  {
+class RegisterViewController: UIViewController,UITextFieldDelegate
+{
+    //object of Controller
+    var controllerObj = Controller()
+    
+    //outlet of button
+    @IBOutlet weak var mybutton: UIButton!
     
     //outlet of username textfield
     @IBOutlet weak var textUsername: UITextField!
@@ -19,25 +25,46 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
     //outlet of confirm password textfield
     @IBOutlet weak var textConfirmPassword: UITextField!
     
-    //on click of submit button
+    
+    //if textfields are filled then only button is enabled
+    func textFieldDidEndEditing(textField: UITextField)
+    {
+        if (textUsername.text?.isEmpty != nil) && (textPassword.text?.isEmpty != nil) && (textConfirmPassword.text?.isEmpty != nil)
+        {
+            //enabling button
+            self.mybutton.enabled = true
+        }else
+        {
+            //disabling button
+            self.mybutton.enabled = false
+        }
+    }
+
+    //action on click of submit button
     @IBAction func SubmitPressed(sender: UIButton)
     {
-        //getting all fields data
+        //getting username
         let userName = textUsername.text
-        let userPassword = textPassword.text
-        let userConfirmPassword = textConfirmPassword.text
         
+        //getting password
+        let userPassword = textPassword.text
+        
+        //getting confirm password
+        let userConfirmPassword = textConfirmPassword.text
+    
         //Checking for empty fields
         if (userName!.isEmpty || userPassword!.isEmpty || userConfirmPassword!.isEmpty)
         {
             
+            //displaying alert message
             displayMyAlertMessage("All fields are required")
-
+            
         }
         
         //checking username length has to be minimum 8
         if (userName?.characters.count < 8)
         {
+            //displaying alert message
             displayMyAlertMessage("Username has to be minimum length 8")
             
         }
@@ -45,6 +72,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
         //checking for password match
         if (userPassword != userConfirmPassword)
         {
+            //displaying alert message
             displayMyAlertMessage("Passwords do not match")
             
         }
@@ -52,28 +80,21 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
         //checking password validation using regex
         if((userPassword) != nil)
         {
+            //regex pattern implementation
             let regex = try! NSRegularExpression(pattern:"^(?=.*[A-Z])(?=.*?[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$" , options:[ ])
             
-            let str1 = regex.stringByReplacingMatchesInString(userPassword!, options:[ ], range: NSMakeRange(0, userPassword!.characters.count), withTemplate: "matched")
+            //replacing string if regex pattern matched
+            let str = regex.stringByReplacingMatchesInString(userPassword!, options:[ ], range: NSMakeRange(0, userPassword!.characters.count), withTemplate: "matched")
             
-            if str1 == "matched"
+            if str == "matched"
             {
-                /*FIXME: save data in plist
-                var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-                var path = paths.stringByAppendingString("data.plist")
-                var fileManager = NSFileManager.defaultManager()
-                if (!(fileManager.fileExistsAtPath(path)))
-                {
-                    var bundle : NSString = NSBundle.mainBundle().pathForResource("data", ofType: "plist")!
-                    try! fileManager.copyItemAtPath(bundle as String, toPath: path)
-                }
-                data.setObject(object, forKey: "object")
-                data.writeToFile(path, atomically: true)
-                */
+                //save data in plist
+               controllerObj.savePlistData(userName!, userPassword: userPassword!)
                 return
             }
             else
             {
+                //displaying alert message
                 displayMyAlertMessage("Password is not in expected format")
                
                 /*print("ssssss")
@@ -95,15 +116,16 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
     }
     
     
-    
+    /*
     func didChangePreferredContentSize(notification: NSNotification) {
         print("hi, wrong format")
         return
     }
+    */
     
     //hiding keypad on return
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
         textField.resignFirstResponder()
         return true
     }
@@ -134,7 +156,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate  {
         self.textUsername.delegate = self
         self.textPassword.delegate = self
         self.textConfirmPassword.delegate = self
-       
+        
+        //disabling button
+        mybutton.enabled = false
+        
         // Do any additional setup after loading the view.
     }
 

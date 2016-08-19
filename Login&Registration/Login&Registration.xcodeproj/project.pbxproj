@@ -16,6 +16,8 @@
 		0A58EDC11D631B3B00303743 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58EDC01D631B3B00303743 /* RegisterViewController.swift */; };
 		0A58EDC31D631BD400303743 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58EDC21D631BD400303743 /* FormViewController.swift */; };
 		0A58EDC51D631BE600303743 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58EDC41D631BE600303743 /* InfoViewController.swift */; };
+		0AB850D21D67140D0035C332 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB850D11D67140D0035C332 /* Controller.swift */; };
+		0AB850D41D6718840035C332 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB850D31D6718840035C332 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		0A58EDC01D631B3B00303743 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0A58EDC21D631BD400303743 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		0A58EDC41D631BE600303743 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		0AB850D11D67140D0035C332 /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		0AB850D31D6718840035C332 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 		0A58EDA71D63128400303743 /* Login&Registration */ = {
 			isa = PBXGroup;
 			children = (
+				0AB850D51D6718890035C332 /* Model */,
+				0AB850D01D6713F20035C332 /* Controller */,
 				0A58EDBB1D631AE400303743 /* Views */,
 				0A58EDA81D63128400303743 /* AppDelegate.swift */,
 				0A58EDAC1D63128400303743 /* Main.storyboard */,
@@ -82,6 +88,22 @@
 				0A58EDC41D631BE600303743 /* InfoViewController.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		0AB850D01D6713F20035C332 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0AB850D11D67140D0035C332 /* Controller.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0AB850D51D6718890035C332 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0AB850D31D6718840035C332 /* Model.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +183,8 @@
 				0A58EDC31D631BD400303743 /* FormViewController.swift in Sources */,
 				0A58EDC51D631BE600303743 /* InfoViewController.swift in Sources */,
 				0A58EDC11D631B3B00303743 /* RegisterViewController.swift in Sources */,
+				0AB850D21D67140D0035C332 /* Controller.swift in Sources */,
+				0AB850D41D6718840035C332 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +332,7 @@
 				0A58EDB91D63128400303743 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

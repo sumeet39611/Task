@@ -85,13 +85,18 @@
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="EiN-t4-1Kn" kind="push" identifier="gotoInfoView" id="zFe-hr-IxI"/>
+                                    <action selector="signInPressed:" destination="YAt-69-FCu" eventType="touchUpInside" id="CAf-4O-zCu"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="iue-2H-b38"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="UDO-ot-kV4" id="T27-qk-w2U"/>
+                        <outlet property="userNameTextField" destination="1BS-Sw-S2d" id="vhb-SG-PEb"/>
+                        <segue destination="EiN-t4-1Kn" kind="push" identifier="gotoInfoView" id="1Jy-9W-YFR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjY-FG-2cO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJt-LD-ThG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1259" y="-112"/>
+            <point key="canvasLocation" x="1366" y="-108"/>
         </scene>
         <!--Register-->
         <scene sceneID="2FX-t5-bhl">
@@ -201,6 +206,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="JjF-6I-il0"/>
                     <connections>
+                        <outlet property="mybutton" destination="ggi-5p-02J" id="mbD-Um-scz"/>
                         <outlet property="textConfirmPassword" destination="1ta-el-LB2" id="ZHV-0g-zhP"/>
                         <outlet property="textPassword" destination="6n6-7t-7DO" id="oNR-VU-4hm"/>
                         <outlet property="textUsername" destination="I9d-XB-rMR" id="bvG-lv-xta"/>
@@ -299,6 +305,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pb5-sw-KOT"/>
+        <segue reference="zpd-a9-iNm"/>
     </inferredMetricsTieBreakers>
 </document>
