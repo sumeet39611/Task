@@ -24,19 +24,44 @@ class LoginViewController: UIViewController,UITextFieldDelegate{
     @IBAction func signInPressed(sender: UIButton)
     {
         
+        
         //getting password
-        let pswd : String = controllerObj.readPlistData(userNameTextField.text!)
+       // let pswd : String = controllerObj.readPlistData(userNameTextField.text!)
         
-        //checking password
-        if passwordTextField.text != pswd
+        //getting dictionary
+        let data = controllerObj.readPlistData()
+        
+       // print(data)
+        
+        if (data.objectForKey(userNameTextField.text!) as? String != nil)
         {
-            //displaying alert message
-            displayMyAlertMessage("Entered password is wrong")
+            //getting password
+            let pswd : String = data.objectForKey(userNameTextField.text!) as! String
+            
+            // print(pswd)
+           // let keys = (data as NSMutableDictionary).allKeysForObject(pswd) as? String
+            
+            // print(keys)
         
+            if passwordTextField.text != pswd
+            {
+                //displaying alert message
+                self.displayMyAlertMessage("Entered password is wrong")
+                
+            }
+            else
+            {
+                performSegueWithIdentifier("gotoInfoView", sender: nil)
+            }
+
+
         }
-        else{
-            performSegueWithIdentifier("gotoInfoView", sender: nil)
+        
+        else
+        {
+            self.displayMyAlertMessage("please enter valid username or password")
         }
+        
     }
     
     //function for alert messaging

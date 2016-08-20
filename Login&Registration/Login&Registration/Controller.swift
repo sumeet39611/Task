@@ -19,6 +19,7 @@ class Controller: NSObject {
         let fileManager = NSFileManager.defaultManager()
         let fileExists:Bool = fileManager.fileExistsAtPath(path)
         var data : NSMutableDictionary?
+        let dict = NSMutableDictionary()
         
         //Check if plist file exists at path specified
         if fileExists == false
@@ -31,14 +32,17 @@ class Controller: NSObject {
             //File exists – retrieve data from plist inside data dictionary
             data = NSMutableDictionary(contentsOfFile: path)
         }
-        data?.setValue(userPassword, forKey: userName)
+        
+        dict.setValue(userPassword, forKey: userName)
+        
+        data?.setValue(dict, forKey: "id")
+        
         data?.writeToFile(path, atomically: true) //Write data to file permanently
-
         return
     }
     
     //reading data from Plist
-    func readPlistData(userName: String) -> String
+    func readPlistData() -> NSMutableDictionary
     {
         var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let documentsDirectory:AnyObject = paths[0]
@@ -46,10 +50,11 @@ class Controller: NSObject {
         
         //Retrieve contents from file at specified path
         let data = NSMutableDictionary(contentsOfFile: path)
-       // print(path)
+        //print(path)
         //print(data?.objectForKey(userName))
-        return (data?.objectForKey(userName))! as! String
-
+        
+        //return (data?.objectForKey(userName))! as! String
+        return data!
     }
 
 }

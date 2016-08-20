@@ -272,6 +272,7 @@
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="submitButtonPressed:" destination="ssy-Sg-E6B" eventType="touchUpInside" id="LzP-gG-n3v"/>
                                     <segue destination="XuF-za-OGV" kind="push" identifier="gotoHomeView" id="Pb5-sw-KOT"/>
                                 </connections>
                             </button>
@@ -279,6 +280,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Form" id="XS2-z7-7O6"/>
+                    <connections>
+                        <outlet property="mobileNoTextField" destination="2TY-iF-QPd" id="Sl3-4t-gFe"/>
+                        <outlet property="nameTextField" destination="fCP-04-Zvl" id="ncY-Mt-sWM"/>
+                        <outlet property="surnameTextField" destination="T48-us-RP9" id="vfp-RJ-Gzi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwF-n9-LSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -305,6 +311,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zpd-a9-iNm"/>
+        <segue reference="Pb5-sw-KOT"/>
     </inferredMetricsTieBreakers>
 </document>

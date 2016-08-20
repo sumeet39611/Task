@@ -29,11 +29,13 @@ class RegisterViewController: UIViewController,UITextFieldDelegate
     //if textfields are filled then only button is enabled
     func textFieldDidEndEditing(textField: UITextField)
     {
-        if (textUsername.text?.isEmpty != nil) && (textPassword.text?.isEmpty != nil) && (textConfirmPassword.text?.isEmpty != nil)
+        
+        if (textUsername.text?.characters.count > 7) && (textPassword.text?.characters.count > 7) && (textConfirmPassword.text?.characters.count > 7)
         {
             //enabling button
             self.mybutton.enabled = true
-        }else
+        }
+        else
         {
             //disabling button
             self.mybutton.enabled = false
@@ -57,7 +59,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate
         {
             
             //displaying alert message
-            displayMyAlertMessage("All fields are required")
+            self.displayMyAlertMessage("All fields are required")
             
         }
         
@@ -65,7 +67,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate
         if (userName?.characters.count < 8)
         {
             //displaying alert message
-            displayMyAlertMessage("Username has to be minimum length 8")
+            self.displayMyAlertMessage("Username has to be minimum length 8")
             
         }
         
@@ -73,7 +75,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate
         if (userPassword != userConfirmPassword)
         {
             //displaying alert message
-            displayMyAlertMessage("Passwords do not match")
+            self.displayMyAlertMessage("Passwords do not match")
             
         }
         
@@ -95,7 +97,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate
             else
             {
                 //displaying alert message
-                displayMyAlertMessage("Password is not in expected format")
+                self.displayMyAlertMessage("Password is not in expected format")
                
                 /*print("ssssss")
                 NSNotificationCenter.defaultCenter().addObserver(self,
